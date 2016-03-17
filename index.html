@@ -1,11 +1,73 @@
 <html>
     <style>
         body {
+            color: white;
             background-color: black;
+            position: relative;
+        }
+        
+        h1 {
+            text-align: center;
+            text-shadow: 2px 2px 1px darkgray;  
+        }
+        
+        canvas {
+            border: 1px white solid;
+            box-shadow: 4px 4px 3px darkgray;
+        }
+        
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        button {
+            margin: 10px;
+        }
+        
+        @-webkit-keyframes wiggle {
+            0% { -webkit-transform:rotate(2deg); }
+            50% { -webkit-transform:rotate(-2deg); }
+            100% { -webkit-transform:rotate(2deg); }
+        }
+
+        @-moz-keyframes wiggle {
+            0% { -moz-transform:rotate(2deg); }
+            50% { -moz-transform:rotate(-2deg); }
+            100% { -moz-transform:rotate(2deg); }
+        }
+                
+        @keyframes wiggle {
+            0% { transform: rotate(2deg); }
+            50% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
+        }
+
+        .wiggle {
+            -wexbkit-animation-name: wiggle 
+            -webkit-animation- 0.2s ;
+            -webkit-animation-iteration-count: 20;
+            -moz-animation-name: wiggle;
+            -moz-animation-duration: 0.2s;
+            -moz-animation-iteration-count: 20;
+            animation-name: wiggle;
+            animation-duration: 0.2s;
+            animation-iteration-count: 20;
         }
     </style>
     <body>
-        <canvas id="canvas"></canvas>
+        <div class="center">
+            <h1>A Buddhabrot Fractal</h1>
+            <canvas id="canvas"></canvas>
+            <p>
+               <button class="wiggle" onclick="drawBuddhalbrot()">Draw Buddhabrot</button> Have patience, it takes a <i>long</i> time to calculate! 
+            </p>
+        </div>
+        <a href="https://github.com/DonKarlssonSan/BuddhabrotJs">
+            <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png">
+        </a>
         <script>
             var canvas = document.getElementById("canvas");
             var width = canvas.width = 500;
@@ -15,11 +77,11 @@
             ctx.fillRect(0, 0, width, height);
             ctx.fillStyle = "rgba(255, 255, 255, 0.005)";
             
-            function drawBuddhalbrot () {
+            function drawBuddhalbrot() {
                 var x;
                 var y;
                 var iteration;
-                var max_iteration = 100;
+                var max_iteration = 80;
                 var xtemp;
                 var points;
                 var x0;
@@ -41,7 +103,7 @@
                     }
                     if(x*x + y*y > 4 || iteration > max_iteration) {
                         points.forEach((point) => {
-                            var xx = (point[0]+2)*200;
+                            var xx = (point[0]+1.9)*200;
                             var yy = (point[1]+1.3)*200;
                             if(xx < width && xx > 0 && yy < height && yy > 0) {
                                 ctx.fillRect(yy, xx, 1, 1);
@@ -50,7 +112,6 @@
                     }
                 }
             }
-            drawBuddhalbrot();
         </script>
     </body>
 </html
