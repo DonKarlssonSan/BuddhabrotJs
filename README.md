@@ -1,0 +1,2 @@
+# BuddhabrotJs
+Buddhabrot fractal renderer
