@@ -47,7 +47,7 @@
 
         .wiggle {
             -wexbkit-animation-name: wiggle 
-            -webkit-animation- 0.2s ;
+            -webkit-animation-duration: 0.2s;
             -webkit-animation-iteration-count: 20;
             -moz-animation-name: wiggle;
             -moz-animation-duration: 0.2s;
@@ -62,7 +62,7 @@
             <h1>A Buddhabrot Fractal</h1>
             <canvas id="canvas"></canvas>
             <p>
-               <button class="wiggle" onclick="drawBuddhalbrot()">Draw Buddhabrot</button> Have patience, it takes a <i>long</i> time to calculate! 
+               <button class="wiggle" onclick="drawBuddhabrot()">Draw Buddhabrot</button> Have patience, it takes a <i>long</i> time to calculate! 
             </p>
         </div>
         <a href="https://github.com/DonKarlssonSan/BuddhabrotJs">
@@ -77,7 +77,7 @@
             ctx.fillRect(0, 0, width, height);
             ctx.fillStyle = "rgba(255, 255, 255, 0.005)";
             
-            function drawBuddhalbrot() {
+            function drawBuddhabrot() {
                 var x;
                 var y;
                 var iteration;
